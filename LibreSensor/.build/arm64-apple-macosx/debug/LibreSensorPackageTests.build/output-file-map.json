@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/master.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.derived/runner.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/runner.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/runner.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/runner~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/runner.swiftdeps"
+  }
+}

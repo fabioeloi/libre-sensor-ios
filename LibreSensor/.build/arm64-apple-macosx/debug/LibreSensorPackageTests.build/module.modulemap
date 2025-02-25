@@ -1,0 +1,4 @@
+module LibreSensorPackageTests {
+    header "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensorPackageTests.build/LibreSensorPackageTests-Swift.h"
+    requires objc
+}

@@ -1,0 +1,41 @@
+{
+  "": {
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/master.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/CalibrationInfo.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/CalibrationInfo.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/CalibrationInfo.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/CalibrationInfo~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/CalibrationInfo.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/Glucose.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Glucose.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Glucose.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Glucose~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Glucose.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/NFCManager.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/NFCManager.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/NFCManager.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/NFCManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/NFCManager.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/RawTag.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/RawTag.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/RawTag.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/RawTag~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/RawTag.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/Reading.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Reading.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Reading.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Reading~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Reading.swiftdeps"
+  },
+  "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/Sources/LibreSensor/Sensor.swift": {
+    "dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Sensor.d",
+    "object": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Sensor.swift.o",
+    "swiftmodule": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Sensor~partial.swiftmodule",
+    "swift-dependencies": "/Users/fabiosilva/CascadeProjects/libre-sensor/LibreSensor/.build/arm64-apple-macosx/debug/LibreSensor.build/Sensor.swiftdeps"
+  }
+}
