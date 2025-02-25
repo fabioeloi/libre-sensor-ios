@@ -19,3 +19,9 @@ targets:
         CODE_SIGN_ENTITLEMENTS: SensorTestApp/SensorTestApp.entitlements
     dependencies:
       - package: LibreSensor
+    capabilities:
+      com.apple.developer.nfc.readersession.formats:
+        - TAG
+        - NDEF
+      com.apple.developer.nfc.readersession.iso15693.compliance:
+        - ISO15693
