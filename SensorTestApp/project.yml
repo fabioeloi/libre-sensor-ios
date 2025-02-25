@@ -16,7 +16,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: com.fabioeloi.LibreSensorTestApp
         DEVELOPMENT_TEAM: 42Z97964J4
         CODE_SIGN_STYLE: Automatic
-        CODE_SIGN_ENTITLEMENTS: SensorTestApp/SensorTestApp.entitlements
+        CODE_SIGN_ENTITLEMENTS: SensorTestApp.entitlements
     dependencies:
       - package: LibreSensor
     capabilities:
