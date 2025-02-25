@@ -1,0 +1,21 @@
+name: SensorTestApp
+options:
+  bundleIdPrefix: com.fabioeloi
+  deploymentTarget:
+    iOS: 14.0
+packages:
+  LibreSensor:
+    path: ..
+targets:
+  SensorTestApp:
+    type: application
+    platform: iOS
+    sources: [SensorTestApp]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.fabioeloi.LibreSensorTestApp
+        DEVELOPMENT_TEAM: 42Z97964J4
+        CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: SensorTestApp/SensorTestApp.entitlements
+    dependencies:
+      - package: LibreSensor
