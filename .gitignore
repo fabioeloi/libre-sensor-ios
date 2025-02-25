@@ -25,3 +25,10 @@ build/
 !default.mode2v3
 *.perspectivev3
 !default.perspectivev3
+# Xcode
+xcuserdata/
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
