@@ -11,5 +11,7 @@
     <array>
         <string>ISO15693</string>
     </array>
+    <key>com.apple.external-accessory.wireless-configuration</key>
+    <true/>
 </dict>
 </plist>

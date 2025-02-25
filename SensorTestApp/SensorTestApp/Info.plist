@@ -6,6 +6,10 @@
 	<string>com.fabioeloi.LibreSensorTestApp</string>
 	<key>NFCReaderUsageDescription</key>
 	<string>We need to access NFC to read your Freestyle Libre sensor.</string>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>We need Bluetooth access to connect to your Freestyle Libre sensor for continuous glucose monitoring.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>We need Bluetooth access to connect to your Freestyle Libre sensor for continuous glucose monitoring.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
