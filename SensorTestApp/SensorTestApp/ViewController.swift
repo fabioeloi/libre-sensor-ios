@@ -3,147 +3,138 @@ import LibreSensor
 import os.log
 
 class ViewController: UIViewController {
-    private let nfcManager = NFCManager()
+    private let bluetoothManager = BluetoothManager.shared
     private let scanButton = UIButton(type: .system)
     private let resultLabel = UILabel()
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-    private let logger = Logger(subsystem: "com.fabioeloi.LibreSensor", category: "SensorScanning")
+    private let logger = Logger(subsystem: "com.fabioeloi.LibreSensorTestApp", category: "ViewController")
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        
+        // Start Bluetooth scanning when view loads
+        startBluetoothScanning()
     }
     
     private func setupUI() {
         view.backgroundColor = .systemBackground
         
         // Configure scan button
-        scanButton.setTitle("Scan Sensor", for: .normal)
+        scanButton.setTitle("Start Bluetooth Scan", for: .normal)
         scanButton.titleLabel?.font = .systemFont(ofSize: 18, weight: .medium)
         scanButton.backgroundColor = .systemBlue
         scanButton.setTitleColor(.white, for: .normal)
         scanButton.layer.cornerRadius = 10
-        scanButton.contentEdgeInsets = UIEdgeInsets(top: 12, left: 24, bottom: 12, right: 24)
-        scanButton.addTarget(self, action: #selector(scanButtonTapped), for: .touchUpInside)
+        scanButton.addTarget(self, action: #selector(scanButtonPressed), for: .touchUpInside)
         
         // Configure result label
-        resultLabel.numberOfLines = 0
+        resultLabel.text = "Tap the button to start scanning for Freestyle Libre sensors via Bluetooth"
         resultLabel.textAlignment = .center
+        resultLabel.numberOfLines = 0
         resultLabel.font = .systemFont(ofSize: 16)
         
         // Configure activity indicator
         activityIndicator.hidesWhenStopped = true
         
-        // Add views to hierarchy
-        view.addSubview(scanButton)
-        view.addSubview(resultLabel)
-        view.addSubview(activityIndicator)
+        // Add subviews
+        [scanButton, resultLabel, activityIndicator].forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            view.addSubview($0)
+        }
         
-        // Layout constraints
-        scanButton.translatesAutoresizingMaskIntoConstraints = false
-        resultLabel.translatesAutoresizingMaskIntoConstraints = false
-        activityIndicator.translatesAutoresizingMaskIntoConstraints = false
-        
+        // Set constraints
         NSLayoutConstraint.activate([
             scanButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            scanButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            scanButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -50),
+            scanButton.widthAnchor.constraint(equalToConstant: 220),
+            scanButton.heightAnchor.constraint(equalToConstant: 50),
             
-            resultLabel.topAnchor.constraint(equalTo: scanButton.bottomAnchor, constant: 20),
+            resultLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            resultLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             resultLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
             resultLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
             activityIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            activityIndicator.bottomAnchor.constraint(equalTo: scanButton.topAnchor, constant: -20)
+            activityIndicator.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
         ])
     }
     
-    @objc private func scanButtonTapped() {
-        startScanning()
+    @objc private func scanButtonPressed() {
+        startBluetoothScanning()
     }
     
-    private func startScanning() {
-        // Show scanning state
+    private func startBluetoothScanning() {
+        // Show loading state
         activityIndicator.startAnimating()
         scanButton.isEnabled = false
-        resultLabel.text = "Scanning for sensor..."
+        scanButton.setTitle("Scanning...", for: .normal)
+        resultLabel.text = "Scanning for Freestyle Libre sensors via Bluetooth..."
         resultLabel.textColor = .label
         
-        logger.info("Starting sensor scan")
+        logger.info("Started Bluetooth scanning")
         
-        nfcManager.startScanning { [weak self] result in
+        // Start Bluetooth scanning
+        bluetoothManager.startScanning { [weak self] result in
             DispatchQueue.main.async {
-                self?.handleScanResult(result)
+                self?.handleBluetoothScanResult(result)
             }
         }
     }
     
-    private func handleScanResult(_ result: Result<RawTag, Error>) {
-        // Reset UI state
+    private func handleBluetoothScanResult(_ result: Result<BluetoothReading, Error>) {
+        // Reset UI
         activityIndicator.stopAnimating()
         scanButton.isEnabled = true
+        scanButton.setTitle("Start Bluetooth Scan", for: .normal)
         
         switch result {
-        case .success(let rawTag):
-            handleSuccessfulScan(rawTag)
+        case .success(let reading):
+            logger.info("Received Bluetooth reading: \(reading)")
+            showSuccess(reading: reading)
         case .failure(let error):
-            handleScanError(error)
+            logger.error("Bluetooth scan error: \(error.localizedDescription)")
+            showError(error: error)
         }
     }
     
-    private func handleSuccessfulScan(_ rawTag: RawTag) {
-        logger.info("Successfully scanned sensor")
+    private func showSuccess(reading: BluetoothReading) {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .medium
         
-        // Get sensor information
-        let sensor = rawTag.getSensor()
-        let serialNumber = sensor.getSerialNumber()
-        let sensorState = sensor.getState()
+        let message = """
+        Reading received!
         
-        if let reading = rawTag.getReading() {
-            let glucoseValue = reading.glucose.value
-            let glucoseUnit = reading.glucose.unit
-            let timestamp = reading.timestamp
-            
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateStyle = .short
-            dateFormatter.timeStyle = .short
-            
-            let resultText = """
-                Glucose: \(glucoseValue) \(glucoseUnit)
-                Time: \(dateFormatter.string(from: timestamp))
-                Serial: \(serialNumber)
-                State: \(sensorState)
-                """
-            
-            resultLabel.text = resultText
-            resultLabel.textColor = .systemGreen
-            logger.info("Glucose reading: \(glucoseValue) \(glucoseUnit)")
-        } else {
-            resultLabel.text = "No reading available"
-            resultLabel.textColor = .systemOrange
-            logger.warning("No reading available from sensor")
-        }
+        Time: \(formatter.string(from: reading.timestamp))
+        Glucose: \(reading.glucoseValue) mg/dL
+        Trend: \(reading.trendArrow.rawValue)
+        Sensor: \(reading.sensorSerialNumber)
+        """
+        
+        resultLabel.text = message
+        resultLabel.textColor = .systemGreen
     }
     
-    private func handleScanError(_ error: Error) {
-        logger.error("Scan error: \(error.localizedDescription)")
-        
+    private func showError(error: Error) {
         let errorMessage: String
         let errorColor: UIColor
         
-        switch error {
-        case NFCError.notAvailable:
-            errorMessage = "NFC is not available on this device"
-            errorColor = .systemRed
-        case NFCError.notEnabled:
-            errorMessage = "NFC is not enabled. Please enable it in Settings"
+        if let bluetoothError = error as? BluetoothError {
+            switch bluetoothError {
+            case .notReady:
+                errorMessage = "Bluetooth is not ready. Please make sure Bluetooth is enabled in Settings."
+            case .poweredOff:
+                errorMessage = "Bluetooth is turned off. Please enable Bluetooth in Settings."
+            case .unauthorized:
+                errorMessage = "Bluetooth permission denied. Please allow Bluetooth access in Settings."
+            case .unsupported:
+                errorMessage = "Bluetooth is not supported on this device."
+            case .unknown:
+                errorMessage = "Unknown Bluetooth error occurred."
+            }
             errorColor = .systemOrange
-        case NFCError.noTagFound:
-            errorMessage = "No sensor found. Please make sure the sensor is placed correctly near the top of your iPhone"
-            errorColor = .systemOrange
-        case NFCError.invalidData:
-            errorMessage = "Invalid sensor data. Please try scanning again"
-            errorColor = .systemRed
-        default:
+        } else {
             errorMessage = "Error: \(error.localizedDescription)"
             errorColor = .systemRed
         }

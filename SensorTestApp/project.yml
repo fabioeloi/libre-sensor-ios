@@ -5,7 +5,7 @@ options:
     iOS: 14.0
 packages:
   LibreSensor:
-    path: ..
+    path: /Users/fabiosilva/CascadeProjects/libre-sensor
 targets:
   SensorTestApp:
     type: application
@@ -20,8 +20,5 @@ targets:
     dependencies:
       - package: LibreSensor
     capabilities:
-      com.apple.developer.nfc.readersession.formats:
-        - TAG
-        - NDEF
-      com.apple.developer.nfc.readersession.iso15693.compliance:
-        - ISO15693
+      com.apple.external-accessory.wireless-configuration:
+        enabled: true

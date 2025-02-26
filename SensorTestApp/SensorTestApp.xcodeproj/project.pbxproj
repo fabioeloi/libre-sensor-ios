@@ -117,7 +117,7 @@
 			);
 			mainGroup = 8DAF232CEEBFF91B6C022589;
 			packageReferences = (
-				C93A8233E4022184C01D141F /* XCLocalSwiftPackageReference ".." */,
+				5284C03CE86DC401EAB1137C /* XCLocalSwiftPackageReference "/Users/fabiosilva/CascadeProjects/libre-sensor" */,
 			);
 			projectDirPath = "";
 			projectRoot = "";
@@ -322,9 +322,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		C93A8233E4022184C01D141F /* XCLocalSwiftPackageReference ".." */ = {
+		5284C03CE86DC401EAB1137C /* XCLocalSwiftPackageReference "/Users/fabiosilva/CascadeProjects/libre-sensor" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = ..;
+			relativePath = "/Users/fabiosilva/CascadeProjects/libre-sensor";
 		};
 /* End XCLocalSwiftPackageReference section */
 
